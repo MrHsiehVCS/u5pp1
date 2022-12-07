@@ -63,7 +63,7 @@ public class Connect4 {
     private static boolean doesColorWinVertical(int[][] board, int color) {
         for (int c = 0; c < board[0].length; c++) {
             int inARow = 0;
-            for (int r = 0; r < board[r].length; r++) {
+            for (int r = 0; r < board.length; r++) {
                 if (board[r][c] == color) {
                     inARow += 1;
                 } else {
