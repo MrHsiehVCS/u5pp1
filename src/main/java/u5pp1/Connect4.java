@@ -7,6 +7,9 @@ public class Connect4 {
     public static final int NO_WINNER = 2;
     public static final int BOTH_WIN = 3;
 
+    private static final int RED = 1;
+    private static final int BLACK = -1;
+
     public static boolean isFull(int[][] board) {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[r].length; c++) {
@@ -36,8 +39,87 @@ public class Connect4 {
     }
 
     public static int getWinner(int[][] board) {
-        // TODO
-        return RED_WIN;
+        boolean redWins = doesColorWin(board, RED);
+        boolean blackWins = doesColorWin(board, BLACK);
+        if (redWins && blackWins) {
+            return BOTH_WIN;
+        }
+        if (redWins) {
+            return RED_WIN;
+        }
+        if (blackWins) {
+            return BLACK_WIN;
+        }
+        return NO_WINNER;
+    }
+
+    private static boolean doesColorWin(int[][] board, int color) {
+        return doesColorWinVertical(board, color) ||
+                doesColorWinHorizontal(board, color) ||
+                doesColorWinDiagonalUp(board, color) ||
+                doesColorWinDiagonalDown(board, color);
+    }
+
+    private static boolean doesColorWinVertical(int[][] board, int color) {
+        for (int c = 0; c < board[0].length; c++) {
+            int inARow = 0;
+            for (int r = 0; r < board[r].length; r++) {
+                if (board[r][c] == color) {
+                    inARow += 1;
+                } else {
+                    inARow = 0;
+                }
+                if (inARow == 4) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean doesColorWinHorizontal(int[][] board, int color) {
+        for (int r = 0; r < board.length; r++) {
+            int inARow = 0;
+            for (int c = 0; c < board[r].length; c++) {
+                if (board[r][c] == color) {
+                    inARow += 1;
+                } else {
+                    inARow = 0;
+                }
+                if (inARow == 4) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean doesColorWinDiagonalUp(int[][] board, int color) {
+        for (int r = 3; r < board.length; r++) {
+            for (int c = 0; c < board[r].length - 3; c++) {
+                if (board[r][c] == color &&
+                        board[r - 1][c + 1] == color &&
+                        board[r - 2][c + 2] == color &&
+                        board[r - 3][c + 3] == color) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean doesColorWinDiagonalDown(int[][] board, int color) {
+        for (int r = 0; r < board.length - 3; r++) {
+            for (int c = 0; c < board[r].length - 3; c++) {
+                if (board[r][c] == color &&
+                        board[r + 1][c + 1] == color &&
+                        board[r + 2][c + 2] == color &&
+                        board[r + 3][c + 3] == color) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
