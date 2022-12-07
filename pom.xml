@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>csa</groupId>
-  <artifactId>EmptyProjectTemplate</artifactId>
+  <artifactId>u5pp1</artifactId>
   <version>1.0</version>
 
-  <name>EmptyProjectTemplate</name>
-  <url>https://github.com/MrHsiehVCS/EmptyProjectTemplate</url>
+  <name>u5pp1</name>
+  <url>https://github.com/MrHsiehVCS/u5pp1</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
