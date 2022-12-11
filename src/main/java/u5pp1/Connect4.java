@@ -9,11 +9,12 @@ public class Connect4 {
 
     private static final int RED = 1;
     private static final int BLACK = -1;
+    private static final int EMPTY = 0;
 
     public static boolean isFull(int[][] board) {
         for (int r = 0; r < board.length; r++) {
             for (int c = 0; c < board[r].length; c++) {
-                if (board[r][c] == 0) {
+                if (board[r][c] == EMPTY) {
                     return false;
                 }
             }
@@ -26,7 +27,7 @@ public class Connect4 {
             boolean foundAPiece = false;
             for (int r = 0; r < board.length; r++) {
 
-                if (foundAPiece && board[r][c] == 0) {
+                if (foundAPiece && board[r][c] == EMPTY) {
                     return false;
                 }
 
