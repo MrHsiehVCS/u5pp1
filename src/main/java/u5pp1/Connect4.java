@@ -7,9 +7,9 @@ public class Connect4 {
     public static final int NO_WINNER = 2;
     public static final int BOTH_WIN = 3;
 
-    private static final int RED = 1;
-    private static final int BLACK = -1;
-    private static final int EMPTY = 0;
+    public static final int RED = 1;
+    public static final int BLACK = -1;
+    public static final int EMPTY = 0;
 
     public static boolean isFull(int[][] board) {
         for (int r = 0; r < board.length; r++) {
